@@ -1,0 +1,182 @@
+:root {
+  --clr-background: hsl(0, 0%, 98%);
+  --clr-text: hsl(0, 0%, 41%);
+  --clr-heading: hsl(0, 0%, 8%); 
+
+  --clr-overlay-bg: hsla(0, 0%, 23.5%, 0.84);
+
+  --font-size: 10px;
+  --font-family: 'Epilogue', sans-serif;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+}
+
+body {
+  background-color: var(--clr-background);
+}
+
+/* utitlity classes  */
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+
+/* page structure */
+
+.wrapper {
+  grid-template: "header" 80px
+                 "main"  auto
+                 "footer" 100px / 1fr;
+}
+
+
+/* header */
+
+header {
+  text-align: left;
+  inline-size: 100%;
+  z-index: 100;
+  padding: 1em 1.5em;
+  justify-content: space-between;
+  align-items: center;
+  font-size: calc(var(--font-size) * 1.5);
+  font-weight: 700;
+  background-color: var(--clr-background);
+}
+
+
+/* navigation */
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  position: relative;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background-color: var(--clr-heading);
+  inline-size: 2em;
+  block-size: 2px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  position: absolute;
+  content: "";
+}
+
+.nav-toggle-label span::before {
+  top: 7px;
+}
+
+.nav-toggle-label span::after {
+  bottom: 7px;
+}
+
+nav {
+  position: absolute;
+  background-color: var(--clr-background);
+  inline-size: 60%;
+  block-size: 100%;
+  text-align: left;
+  top: 0%;
+  right: 0;
+  transform: scale(1, 0) translateX(10px);
+  transform-origin: top right;
+  transition: transform 250ms ease-in-out;
+}
+
+nav ul {
+  position: relative;
+  top: 100px;
+}
+
+nav li {
+  list-style: none;
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+li a {
+  text-decoration: none;
+  color: var(--clr-text);
+}
+
+li a:hover {
+  color: black;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  block-size: 100%;
+  inline-size: 100%;
+  background-color: var(--clr-overlay-bg);
+  transform: scale(1, 0);
+  transform-origin: top center;
+  transition: transform 250ms ease-in-out;
+}
+
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);  
+  z-index: 99;
+}
+
+.nav-toggle:checked ~ div {
+  transform: scale(1, 1);
+  z-index: 1;
+}
+
+/* main  */ 
+
+main {
+  grid-template: "hero-image" 1fr
+                 "content" 1fr
+                 "brand-logos" .5fr;
+}
+
+.hero-image {
+  max-inline-size: 100%;
+}
+
+/* footer  */
+.attribution { 
+  font-size: 11px; 
+  text-align: center; 
+}
+
+.attribution a { 
+  color: hsl(228, 45%, 44%); 
+}
+
