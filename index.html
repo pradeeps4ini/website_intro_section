@@ -21,18 +21,51 @@
     <div class="overlay"></div>
     <nav>
       <ul>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Company</a></li>
+        <li><a href="#">Features</a>
+          <input type="checkbox" id="sub-menu" class="sub-menu sub-menu1">
+          <label for="sub-menu" class="sub-menu-toggle"><img src="./images/icon-arrow-down.svg" alt="arrow down icon"></label>
+ 
+          <ul class="sub-list sub-list1">
+            <li>
+              <img src="./images/icon-todo.svg" alt="todo icon">
+              <p>Todo List</p>
+            </li>
+            <li>
+              <img src="./images/icon-calendar.svg" alt="calender icon">
+              <p>Calender</p>
+            </li>
+            <li>
+              <img src="./images/icon-reminders.svg" alt="reminders icon">
+              <p>Reminders</p>
+            </li>
+            <li>
+              <img src="./images/icon-planning.svg" alt="planning icons">
+              <p>Planning</p>
+            </li>
+          </ul>
+        </li>
+
+        <li><a href="#">Company</a> 
+          <input type="checkbox" id="sub-menu1" class="sub-menu sub-menu2">
+          <label for="sub-menu1" class="sub-menu-toggle"><img src="./images/icon-arrow-down.svg" alt="arrow up icon"></label>
+
+          <ul class="sub-list sub-list2">
+            <li>History</li>
+            <li>Our Team</li>
+            <li>Blog</li>
+          </ul>
+        </li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
-  
-        <div class="signin-btns">
-          <button type="button" class="login-btn"></button>
-          <button type="Register" class="register-btn"></button>
-        </div>
       </ul>  
+      <div class="signin-btns flex">
+          <button type="button" class="login-btn">Login</button>
+          <button type="Register" class="register-btn">Register</button>
+      </div>
     </nav>
-    <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span></span>
+    </label>
   </header>
 
   <main class="grid">

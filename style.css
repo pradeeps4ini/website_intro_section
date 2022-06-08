@@ -2,6 +2,7 @@
   --clr-background: hsl(0, 0%, 98%);
   --clr-text: hsl(0, 0%, 41%);
   --clr-heading: hsl(0, 0%, 8%); 
+  --clr-sublist : hsl(0, 2.2%, 54.7%); 
 
   --clr-overlay-bg: hsla(0, 0%, 23.5%, 0.84);
 
@@ -40,7 +41,7 @@ body {
 /* page structure */
 
 .wrapper {
-  grid-template: "header" 80px
+  grid-template: "header" 60px
                  "main"  auto
                  "footer" 100px / 1fr;
 }
@@ -52,7 +53,7 @@ header {
   text-align: left;
   inline-size: 100%;
   z-index: 100;
-  padding: 1em 1.5em;
+  padding: 0 1.5em;
   justify-content: space-between;
   align-items: center;
   font-size: calc(var(--font-size) * 1.5);
@@ -88,6 +89,7 @@ header {
   position: relative;
 }
 
+
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
   position: absolute;
@@ -96,26 +98,41 @@ header {
 
 .nav-toggle-label span::before {
   top: 7px;
+  transform: all 250ms ease-in-out;
+  transform-origin: 50%;
 }
 
 .nav-toggle-label span::after {
   bottom: 7px;
+  transition: all 250ms ease-in-out;
+  transform-origin: 50%;
 }
 
 nav {
   position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-flow: column nowrap;
   background-color: var(--clr-background);
   inline-size: 60%;
   block-size: 100%;
   text-align: left;
-  top: 0%;
-  right: 0;
+  font-size: 14px;
   transform: scale(1, 0) translateX(10px);
   transform-origin: top right;
   transition: transform 250ms ease-in-out;
 }
 
 nav ul {
+  position: relative;
+  top: 80px;
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+}
+
+nav div {
   position: relative;
   top: 100px;
 }
@@ -131,8 +148,35 @@ li a {
   color: var(--clr-text);
 }
 
+li a,
+.signin-btns {
+  opacity: 0;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
 li a:hover {
   color: black;
+}
+
+.signin-btns {
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 1rem;
+  font-size: calc(var(--font-size) * 1.5);
+}
+
+.signin-btns button {
+  border: none;
+  background: none;
+  font-size: calc(var(--font-size) * 1.5);
+  color: var(--clr-text);
+}
+
+.signin-btns > .register-btn {
+  inline-size: 80%;
+  border: 2px solid var(--clr-text);
+  border-radius: 10px;
+  padding: 1rem;
 }
 
 .overlay {
@@ -156,6 +200,68 @@ li a:hover {
 .nav-toggle:checked ~ div {
   transform: scale(1, 1);
   z-index: 1;
+}
+
+.nav-toggle:checked ~ nav a, 
+.nav-toggle:checked ~ nav .signin-btns {
+  opacity: 1;
+}
+
+.nav-toggle:checked ~ .nav-toggle-label > span {
+  background-color: var(--clr-background);
+}
+
+.nav-toggle:checked ~ .nav-toggle-label > span::before  {
+  transform: translateY(-7px) rotate(-135deg);
+}
+
+.nav-toggle:checked ~ .nav-toggle-label > span::after  {
+  transform: translateY(7px) rotate(135deg);
+}
+
+
+/* sub-list  */
+
+.sub-list {
+  display: none;
+  position: relative;
+  top: auto;
+  margin-top: 15px;
+  color: var(--clr-sublist);
+  font-size: 12px;
+}
+
+.sub-list li {
+  display: flex;
+  text-align: center;
+  gap: 1rem;
+}
+
+.sub-list li p {
+  align-self: center;
+}
+
+.sub-menu {
+  display: none;
+}
+
+.sub-menu-toggle {
+  margin-left: 10px;
+}
+
+.sub-menu1:checked ~ .sub-list1 {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: .8rem;
+
+}
+
+.sub-menu2:checked ~ .sub-list2 {
+  display: block
+}
+
+.sub-menu:checked ~ .sub-menu-toggle img {
+  transform: rotateZ(180deg);
 }
 
 /* main  */ 
