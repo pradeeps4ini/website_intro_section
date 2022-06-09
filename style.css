@@ -41,9 +41,9 @@ body {
 /* page structure */
 
 .wrapper {
-  grid-template: "header" 60px
+  grid-template: "header" 70px
                  "main"  auto
-                 "footer" 100px / 1fr;
+                 "footer" 70px / 1fr;
 }
 
 
@@ -269,20 +269,173 @@ li a:hover {
 main {
   grid-template: "hero-image" 1fr
                  "content" 1fr
-                 "brand-logos" .5fr;
 }
 
 .hero-image {
   max-inline-size: 100%;
 }
 
+.hero-image img {
+  max-inline-size: 100%;
+}
+
+.content {
+  padding: 3rem 1.4rem;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.content > * {
+  text-align: center;
+}
+
+.content > h2 {
+  font-size: clamp(2.5rem , calc(6.5vw + 1rem), 4rem);
+}
+
+.content > p {
+  font-size: clamp(1rem , calc(2vw + .75rem), 2rem);
+  color: var(--clr-text);
+}
+
+.content button {
+  inline-size: 9em; 
+  block-size: 3em;
+  background-color: var(--clr-heading);
+  color: var(--clr-background);
+  font-size: calc(var(--font-size) * 1.4);
+  font-weight: 700;
+  border: none;
+  border-radius: 15px;
+}
+
+
+/*  brand logos for reference*/
+
+.brand-logos ul {
+  list-style: none;
+  justify-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.brand-logos img {
+  block-size: 15px;
+  inline-size: 6rem;
+}
+
 /* footer  */
 .attribution { 
+  grid-area: footer;
   font-size: 11px; 
   text-align: center; 
+  justify-content: center;
+  align-items: end;
 }
 
 .attribution a { 
   color: hsl(228, 45%, 44%); 
 }
 
+
+@media screen and (min-width: 700px) {
+  main {
+    margin-top: 4rem;
+    grid-template: 1fr / 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .content {
+    grid-area: 1 / 1 / 1 / 2;
+    max-inline-size: 78%;
+    place-self: center;
+    margin-inline: auto;
+    padding-inline: 5rem;
+    gap: 3rem;
+  }
+
+  .content > h2 {
+    font-size: clamp(3rem, calc(5vw + 1rem), 5rem); 
+    text-align: left;
+  }
+
+  .content > p {
+    text-align: left;
+    font-size:  1.4rem;
+  }
+  
+  .content > button {
+    align-self: start;
+  }
+
+  .content .brand-logos {
+    margin-top: 2rem;
+    align-self: left;
+  }
+
+  .hero-image {
+    grid-area: 1 / 2 / 1 / 3;
+    inline-size: 70%;
+    place-self: center;
+  }
+
+  .nav-toggle-label > span{
+    display: none;
+  }
+  
+  header {
+    justify-content: space-between;
+  }
+
+  nav {
+    transform: scale(1, 1);
+    flex-flow: row nowrap; 
+    justify-content: space-between;
+    block-size: inherit;
+    inline-size: 85%;
+    align-self: center;
+    position: relative;
+    top: 20%;
+  }
+ 
+  nav ul {
+    top: 0;
+    flex-flow: row nowrap;
+  }
+
+  nav div {
+    top: 0;
+  }
+
+  nav li a,
+  .signin-btns {
+    opacity: 1;
+    color: var(--clr-text);
+  }
+
+  .signin-btns {
+    flex-flow: row nowrap;
+    font-size: 1.3rem;
+    position: absolute;
+    top: -30%; 
+    right: 0;
+  }
+
+  .signin-btns > .register-btn {
+    padding: .5rem;
+    border: 1.5px solid var(--clr-heading);
+    border-radius: 10px;
+  }
+
+  .sub-menu-toggle ~ ul {
+    position: absolute;
+    top: 40%;
+    background-color: white;
+    padding: 2rem 1rem;
+    box-shadow: 1px 1px 2px var(--clr-overlay-bg), -1px -1px 2px var(--clr-overlay-bg);
+  }
+
+}
